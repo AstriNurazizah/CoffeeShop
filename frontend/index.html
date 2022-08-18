@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astri Nurazizah</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    
+</head>
+<body>
+
+<div
+    >
+  <nav class="flex items-center justify-between flex-wrap bg-teal-500 p-6">
+    <div class="flex items-center flex-shrink-0 text-white mr-6">
+    </div>
+      <div class="font-extrabold text-sm lg:flex-grow block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4 text-2xl
+      "
+      >
+          ASTRI NURAZIZAH
+      </div>
+  </nav>
+
+  <div
+      class="w-full flex justify-center items-center flex-col gap-y-6"
+      id="app"
+    >
+      <form 
+        @submit.prevent="jeniskopi.isUpdate ? updateJeniskopi() : submitJeniskopi()" 
+        class=" flex flex-col gap-y-2"
+        >
+        <input 
+            v-model="jeniskopi.name"
+            type="text" 
+            placeholder="Masukan Nama"
+            class="bg-white rounded-lg shadow-md focus:outline-none focus:drop-shadow-md border-2 border-teal-200"
+        />
+        <input 
+            v-model="jeniskopi.rasa"
+            type="text" 
+            placeholder="Masukan Rasa"
+            class="bg-white rounded-lg shadow-md focus:outline-none focus:drop-shadow-md border-2 border-teal-200"
+        />
+        <input 
+            v-model="jeniskopi.origin"
+            type="text" 
+            placeholder="Masukan Origin"
+            class="bg-white rounded-lg shadow-md focus:outline-none focus:drop-shadow-md border-2 border-teal-200"
+        />
+        <button 
+        id="submit"
+          type="submit"
+          class="bg-white border-2 border-teal-300 rounded-lg text-teal-300"
+           > 
+            {{ jeniskopi.isUpdate ? 'Update' : 'Create'}} 
+        </button>
+      </form>
+    </div>
+
+    <center>
+      <h1 class="font-extrabold text-sm lg:flex-grow block mt-4 lg:inline-block lg:mt-0 text-black-200 mr-4 text-2xl"
+      >
+      JENIS JENIS KOPI
+    </h1>
+    </center>
+  <div id="tabel" class="overflow-x-auto relative m-20">
+    <table class="w-full text-sm text-left text-black-500 dark:text-black-400">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Rasa</th>
+          <th>Origin</th>
+          <th>Tindakan</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(jeniskopi, index) in jeniskopi" :key="jeniskopi.id">
+          <span @click="getMahasiswaById(item.id)">
+          <td>{{jeniskopi.name}}</td>
+          <td>{{jeniskopi.rasa}}</td>
+          <td>{{jeniskopi.origin}}</td>
+          </span>
+          <td>
+            <a class="btn btn-success" href>
+              <i class="fas fa-edit"></i>
+              Edit
+            </a>
+          </td>
+          <td>
+            <a class="btn btn-success" href>
+              <i class="fas fa-trash-alt"></i>
+              Delete
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="./index.js"></script>
+</body>
+</html>
+            
+        
